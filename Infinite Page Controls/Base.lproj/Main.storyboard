@@ -21,7 +21,7 @@
                                 <color key="textColor" systemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View" customClass="InfinitePageControlsView" customModule="Infinite_Page_Controls" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View">
                                 <rect key="frame" x="0.0" y="391" width="393" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -63,7 +63,7 @@
                     </view>
                     <connections>
                         <outlet property="indexLabel" destination="la3-el-rsj" id="ZkN-RG-Ghy"/>
-                        <outlet property="pageControls" destination="9cg-bs-YOc" id="YSO-7P-W7e"/>
+                        <outlet property="pageControlsView" destination="9cg-bs-YOc" id="5Qm-5I-WyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

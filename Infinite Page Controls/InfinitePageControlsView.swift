@@ -7,17 +7,34 @@
 
 import UIKit
 
-protocol InfinitPageControlsNavigate {
-    func next()
-    func prev()
+public struct InfinitePageControlsConfig {
+    public var circleSize: CGFloat
+    public var spacing: CGFloat
+    public var totalCircles: Int
+    public var visibleCircles: Int
+    public var smallCircleRatio: CGFloat
+    public var circleBackground: UIColor
+    public var selectedCircleBackground: UIColor
+    
+    public init(circleSize: CGFloat = 50,
+                spacing: CGFloat = 20,
+                totalCircles: Int = 10,
+                visibleCircles: Int = 4,
+                smallCircleRatio: CGFloat = 0.5,
+                circleBackground: UIColor = .systemPink,
+                selectedCircleBackground: UIColor = .white
+    ) {
+        self.circleSize = circleSize
+        self.spacing = spacing
+        self.totalCircles = totalCircles
+        self.visibleCircles = visibleCircles
+        self.smallCircleRatio = smallCircleRatio
+        self.circleBackground = circleBackground
+        self.selectedCircleBackground = selectedCircleBackground
+    }
 }
 
 public class InfinitePageControlsView: UIView {
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        setup()
-//    }
     
     enum States {
         case first
@@ -25,43 +42,39 @@ public class InfinitePageControlsView: UIView {
         case last
     }
     
-    var circleSize: CGFloat
-    var spacing: CGFloat
-    var totalCircles: Int
-    var visibleCircles: Int
-    var smallCircleRatio: CGFloat
+    private var config: InfinitePageControlsConfig
+    private var circles: [UIView] = []
+    private var currentIndex: Int = 0
+    private var lastIndex: Int = -1
+    private var visibleIndex: Int = 0
     
-    var circles: [UIView] = []
-    var currentIndex: Int = 0
-    var lastIndex: Int = -1
-    var visibleIndex: Int = 0
+    public init(frame: CGRect, config: InfinitePageControlsConfig) {
+        self.config = config
+        super.init(frame: frame)
+        setup()
+    }
     
     required init?(coder: NSCoder) {
-        circleSize = 50
-        spacing = 20
-        totalCircles = 10
-        visibleCircles = 4
-        smallCircleRatio = 0.5
-        
+        self.config = InfinitePageControlsConfig()
         super.init(coder: coder)
         setup()
     }
 
     func setup() {
         
-        let totalWidth = circleSize * CGFloat(visibleCircles) + spacing * CGFloat(visibleCircles - 1)
+        let totalWidth = config.circleSize * CGFloat(config.visibleCircles) + config.spacing * CGFloat(config.visibleCircles - 1)
         
         var xOffset = (bounds.width - totalWidth) / 2
-        let yOffset = (bounds.height - circleSize) / 2
+        let yOffset = (bounds.height - config.circleSize) / 2
         
-        for i in 0..<visibleCircles {
+        for i in 0..<config.visibleCircles {
             let circle = prepareCircleView()
             circle.tag = i
-            circle.frame = CGRect(x: xOffset, y: yOffset, width: circleSize, height: circleSize)
+            circle.frame = CGRect(x: xOffset, y: yOffset, width: config.circleSize, height: config.circleSize)
             addSubview(circle)
             circles.append(circle)
             
-            xOffset += circleSize + spacing
+            xOffset += config.circleSize + config.spacing
         }
         
         update(state: .first, index: 0)
@@ -69,12 +82,11 @@ public class InfinitePageControlsView: UIView {
     }
     
     func update(state: States, index: Int) {
-        print("State: \(state), Circle index: \(index)")
         
         switch state {
         case .first:
             
-            adjustCirclesSize(smallIndices: [visibleCircles - 1])
+            adjustCirclesSize(smallIndices: [config.visibleCircles - 1])
             highlightACircle(index)
             
         case .middle:
@@ -82,7 +94,7 @@ public class InfinitePageControlsView: UIView {
             // moved forward
             if lastIndex < currentIndex {
                 //  if at extreme right - 1
-                if visibleIndex == visibleCircles - 2 {
+                if visibleIndex == config.visibleCircles - 2 {
                     animateCircleBackward(index)
                 } else {
                     visibleIndex += 1
@@ -116,45 +128,45 @@ public class InfinitePageControlsView: UIView {
     public func nextCircle() {
         lastIndex = currentIndex
         currentIndex += 1
-        if currentIndex >= totalCircles { return }
+        if currentIndex >= config.totalCircles { return }
         updateHelper()
     }
     
     func updateHelper() {
         var newState: States
         
-        if currentIndex <= visibleCircles - 2 {
+        if currentIndex <= config.visibleCircles - 2 {
             newState = .first
             visibleIndex = currentIndex
             update(state: newState, index: currentIndex)
-        } else if currentIndex >= (totalCircles - visibleCircles + 1) {
+        } else if currentIndex >= (config.totalCircles - config.visibleCircles + 1) {
             newState = .last
-            let tmpIndex = (currentIndex - (totalCircles - visibleCircles))
+            let tmpIndex = (currentIndex - (config.totalCircles - config.visibleCircles))
             visibleIndex = tmpIndex
             update(state: newState, index: tmpIndex)
         } else {
             newState = .middle
-            update(state: newState, index: visibleCircles - 2)
+            update(state: newState, index: config.visibleCircles - 2)
         }
     }
     
     func animateCircleBackward(_ index: Int) {
-        circles[visibleCircles - 2].backgroundColor = .systemPink
-        circles[visibleCircles - 1].backgroundColor = .white
+        circles[config.visibleCircles - 2].backgroundColor = config.circleBackground
+        circles[config.visibleCircles - 1].backgroundColor = config.selectedCircleBackground
 
         // Shift all circles to the new positions
         UIView.animate(withDuration: 0.5, animations: {
-            let translation = CGAffineTransform(translationX: -1 * (self.circleSize + self.spacing), y: 0)
+            let translation = CGAffineTransform(translationX: -1 * (self.config.circleSize + self.config.spacing), y: 0)
             
-            for i in 0..<self.visibleCircles {
+            for i in 0..<self.config.visibleCircles {
                 if i == 1 {
                     // applying animation for second circle to also get smaller while its translating to left
-                    let scaling = CGAffineTransform(scaleX: self.smallCircleRatio, y: self.smallCircleRatio)
+                    let scaling = CGAffineTransform(scaleX: self.config.smallCircleRatio, y: self.config.smallCircleRatio)
                     self.circles[i].transform = scaling.concatenating(translation)
                 } else if i == 0 {
                     // handling first circle to even get smaller and translate a bit less
-                    let translation = CGAffineTransform(translationX: -1 * (self.circleSize), y: 0)
-                    let scaling = CGAffineTransform(scaleX: 0.5*self.smallCircleRatio, y: 0.5*self.smallCircleRatio)
+                    let translation = CGAffineTransform(translationX: -1 * (self.config.circleSize), y: 0)
+                    let scaling = CGAffineTransform(scaleX: self.config.smallCircleRatio * self.config.smallCircleRatio, y: self.config.smallCircleRatio * self.config.smallCircleRatio)
                     self.circles[i].transform = scaling.concatenating(translation)
                 } else {
                     // for rest of the circles
@@ -168,31 +180,31 @@ public class InfinitePageControlsView: UIView {
                 circle.transform = .identity
             }
             
-            self.circles[self.visibleCircles - 2].backgroundColor = .white
-            self.circles[self.visibleCircles - 1].backgroundColor = .systemPink
+            self.circles[self.config.visibleCircles - 2].backgroundColor = self.config.selectedCircleBackground
+            self.circles[self.config.visibleCircles - 1].backgroundColor = self.config.circleBackground
             
-            self.adjustCirclesSize(smallIndices: [0, self.visibleCircles - 1])
+            self.adjustCirclesSize(smallIndices: [0, self.config.visibleCircles - 1])
             
         }
     }
     
     func animateCircleForward(_ index: Int) {
-        circles[1].backgroundColor = .systemPink
-        circles[0].backgroundColor = .white
+        circles[1].backgroundColor = config.circleBackground
+        circles[0].backgroundColor = config.selectedCircleBackground
 
         // Shift all circles to the new positions
         UIView.animate(withDuration: 0.5, animations: {
-            let translation = CGAffineTransform(translationX: (self.circleSize + self.spacing), y: 0)
+            let translation = CGAffineTransform(translationX: (self.config.circleSize + self.config.spacing), y: 0)
             
-            for i in 0..<self.visibleCircles {
-                if i == self.visibleCircles - 2 {
+            for i in 0..<self.config.visibleCircles {
+                if i == self.config.visibleCircles - 2 {
                     // applying animation for second circle to also get smaller while its translating to left
-                    let scaling = CGAffineTransform(scaleX: self.smallCircleRatio, y: self.smallCircleRatio)
+                    let scaling = CGAffineTransform(scaleX: self.config.smallCircleRatio, y: self.config.smallCircleRatio)
                     self.circles[i].transform = scaling.concatenating(translation)
-                } else if i == self.visibleCircles - 1 {
+                } else if i == self.config.visibleCircles - 1 {
                     // handling first circle to even get smaller and translate a bit less
-                    let translation = CGAffineTransform(translationX: -1 * (self.circleSize), y: 0)
-                    let scaling = CGAffineTransform(scaleX: 0.5*self.smallCircleRatio, y: 0.5*self.smallCircleRatio)
+                    let translation = CGAffineTransform(translationX: -1 * (self.config.circleSize), y: 0)
+                    let scaling = CGAffineTransform(scaleX: self.config.smallCircleRatio * self.config.smallCircleRatio, y: self.config.smallCircleRatio * self.config.smallCircleRatio)
                     self.circles[i].transform = scaling.concatenating(translation)
                 } else {
                     // for rest of the circles
@@ -206,18 +218,18 @@ public class InfinitePageControlsView: UIView {
                 circle.transform = .identity
             }
             
-            self.circles[1].backgroundColor = .white
-            self.circles[0].backgroundColor = .systemPink
+            self.circles[1].backgroundColor = self.config.selectedCircleBackground
+            self.circles[0].backgroundColor = self.config.circleBackground
             
-            self.adjustCirclesSize(smallIndices: [0, self.visibleCircles - 1])
+            self.adjustCirclesSize(smallIndices: [0, self.config.visibleCircles - 1])
             
         }
     }
     
     func adjustCirclesSize(smallIndices: [Int]) {
-        for i in 0..<visibleCircles {
+        for i in 0..<config.visibleCircles {
             if smallIndices.contains(i) {
-                circles[i].transform = CGAffineTransform(scaleX: smallCircleRatio, y: smallCircleRatio)
+                circles[i].transform = CGAffineTransform(scaleX: config.smallCircleRatio, y: config.smallCircleRatio)
             } else {
                 circles[i].transform = CGAffineTransform(scaleX: 1, y: 1)
             }
@@ -225,16 +237,16 @@ public class InfinitePageControlsView: UIView {
     }
     
     func highlightACircle(_ index: Int) {
-        for i in 0..<visibleCircles {
-            circles[i].backgroundColor = (i == index) ? .white : .systemPink
+        for i in 0..<config.visibleCircles {
+            circles[i].backgroundColor = (i == index) ? config.selectedCircleBackground : config.circleBackground
         }
     }
     
     func prepareCircleView() -> UIView {
         let circle = UIView()
-        circle.backgroundColor = .systemPink
+        circle.backgroundColor = config.circleBackground
         circle.clipsToBounds = true
-        circle.layer.cornerRadius = circleSize / 2
+        circle.layer.cornerRadius = config.circleSize / 2
         
         return circle
     }
