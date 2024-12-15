@@ -67,25 +67,98 @@ public class InfinitePageControlsView: UIView {
     }
     
     func update(state: States, index: Int) {
+        print("State: \(state), Circle index: \(index)")
+        
         switch state {
         case .first:
             
-            circles[visibleCircles - 1].transform = CGAffineTransform(scaleX: smallCircleRatio, y: smallCircleRatio)
+            adjustCirclesSize(smallIndices: [visibleCircles - 1])
             highlightACircle(index)
             
-        default:
-            break
+        case .middle:
+            
+            animateCircleBackwards(index)
+//            adjustCirclesSize(smallIndices: [0, visibleCircles - 1])
+//            highlightACircle(index)
+            
+        case .last:
+            
+            adjustCirclesSize(smallIndices: [0])
+            highlightACircle(index)
+            
         }
     }
     
     public func prevCircle() {
         currentIndex -= 1
-        update(state: .first, index: currentIndex)
+        if currentIndex < 0 { return }
+        updateHelper()
     }
     
     public func nextCircle() {
         currentIndex += 1
-        update(state: .first, index: currentIndex)
+        if currentIndex >= totalCircles { return }
+        updateHelper()
+    }
+    
+    func updateHelper() {
+        var newState: States
+        
+        if currentIndex <= visibleCircles - 2 {
+            newState = .first
+            update(state: newState, index: currentIndex)
+        } else if currentIndex >= (totalCircles - visibleCircles + 1) {
+            newState = .last
+            let tmpIndex = (currentIndex - (totalCircles - visibleCircles))
+            update(state: newState, index: tmpIndex)
+        } else {
+            newState = .middle
+            update(state: newState, index: visibleCircles - 2)
+        }
+    }
+    
+    func animateCircleBackwards(_ index: Int) {
+        circles[index].backgroundColor = .systemPink
+        circles[index + 1].backgroundColor = .white
+
+        // Shift all circles to the new positions
+        UIView.animate(withDuration: 0.5, animations: {
+            let translation = CGAffineTransform(translationX: -1 * (self.circleSize + self.spacing), y: 0)
+            
+            for i in 0..<self.visibleCircles {
+                // TODO: handle for i==0 to scale it even smaller
+                if i == -1 {
+                    // applying edge animation for second circle to also get smaller while its translating to left
+                    let scaling = CGAffineTransform(scaleX: self.smallCircleRatio, y: self.smallCircleRatio)
+                    self.circles[i].transform = translation.concatenating(scaling)
+                } else {
+                    // for rest of the circles
+                    self.circles[i].transform = translation
+                }
+            }
+            
+        }) { _ in
+            // Reset transformations
+            for circle in self.circles {
+                circle.transform = .identity
+            }
+            
+            self.circles[index].backgroundColor = .white
+            self.circles[index + 1].backgroundColor = .systemPink
+            
+            self.adjustCirclesSize(smallIndices: [0, self.visibleCircles - 1])
+            
+        }
+    }
+    
+    func adjustCirclesSize(smallIndices: [Int]) {
+        for i in 0..<visibleCircles {
+            if smallIndices.contains(i) {
+                circles[i].transform = CGAffineTransform(scaleX: smallCircleRatio, y: smallCircleRatio)
+            } else {
+                circles[i].transform = CGAffineTransform(scaleX: 1, y: 1)
+            }
+        }
     }
     
     func highlightACircle(_ index: Int) {
