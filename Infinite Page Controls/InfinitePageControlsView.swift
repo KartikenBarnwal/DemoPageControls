@@ -33,6 +33,7 @@ public class InfinitePageControlsView: UIView {
     
     var circles: [UIView] = []
     var currentIndex: Int = 0
+    var lastIndex: Int = -1
     
     required init?(coder: NSCoder) {
         circleSize = 50
@@ -77,7 +78,11 @@ public class InfinitePageControlsView: UIView {
             
         case .middle:
             
-            animateCircleBackwards(index)
+            if lastIndex < currentIndex {
+                animateCircleBackward(index)
+            } else {
+                animateCircleForward(index)
+            }
 //            adjustCirclesSize(smallIndices: [0, visibleCircles - 1])
 //            highlightACircle(index)
             
@@ -90,12 +95,14 @@ public class InfinitePageControlsView: UIView {
     }
     
     public func prevCircle() {
+        lastIndex = currentIndex
         currentIndex -= 1
         if currentIndex < 0 { return }
         updateHelper()
     }
     
     public func nextCircle() {
+        lastIndex = currentIndex
         currentIndex += 1
         if currentIndex >= totalCircles { return }
         updateHelper()
@@ -117,20 +124,24 @@ public class InfinitePageControlsView: UIView {
         }
     }
     
-    func animateCircleBackwards(_ index: Int) {
-        circles[index].backgroundColor = .systemPink
-        circles[index + 1].backgroundColor = .white
+    func animateCircleBackward(_ index: Int) {
+        circles[visibleCircles - 2].backgroundColor = .systemPink
+        circles[visibleCircles - 1].backgroundColor = .white
 
         // Shift all circles to the new positions
         UIView.animate(withDuration: 0.5, animations: {
             let translation = CGAffineTransform(translationX: -1 * (self.circleSize + self.spacing), y: 0)
             
             for i in 0..<self.visibleCircles {
-                // TODO: handle for i==0 to scale it even smaller
-                if i == -1 {
-                    // applying edge animation for second circle to also get smaller while its translating to left
+                if i == 1 {
+                    // applying animation for second circle to also get smaller while its translating to left
                     let scaling = CGAffineTransform(scaleX: self.smallCircleRatio, y: self.smallCircleRatio)
-                    self.circles[i].transform = translation.concatenating(scaling)
+                    self.circles[i].transform = scaling.concatenating(translation)
+                } else if i == 0 {
+                    // handling first circle to even get smaller and translate a bit less
+                    let translation = CGAffineTransform(translationX: -1 * (self.circleSize), y: 0)
+                    let scaling = CGAffineTransform(scaleX: 0.5*self.smallCircleRatio, y: 0.5*self.smallCircleRatio)
+                    self.circles[i].transform = scaling.concatenating(translation)
                 } else {
                     // for rest of the circles
                     self.circles[i].transform = translation
@@ -143,8 +154,46 @@ public class InfinitePageControlsView: UIView {
                 circle.transform = .identity
             }
             
-            self.circles[index].backgroundColor = .white
-            self.circles[index + 1].backgroundColor = .systemPink
+            self.circles[self.visibleCircles - 2].backgroundColor = .white
+            self.circles[self.visibleCircles - 1].backgroundColor = .systemPink
+            
+            self.adjustCirclesSize(smallIndices: [0, self.visibleCircles - 1])
+            
+        }
+    }
+    
+    func animateCircleForward(_ index: Int) {
+        circles[1].backgroundColor = .systemPink
+        circles[0].backgroundColor = .white
+
+        // Shift all circles to the new positions
+        UIView.animate(withDuration: 0.5, animations: {
+            let translation = CGAffineTransform(translationX: (self.circleSize + self.spacing), y: 0)
+            
+            for i in 0..<self.visibleCircles {
+                if i == self.visibleCircles - 2 {
+                    // applying animation for second circle to also get smaller while its translating to left
+                    let scaling = CGAffineTransform(scaleX: self.smallCircleRatio, y: self.smallCircleRatio)
+                    self.circles[i].transform = scaling.concatenating(translation)
+                } else if i == self.visibleCircles - 1 {
+                    // handling first circle to even get smaller and translate a bit less
+                    let translation = CGAffineTransform(translationX: -1 * (self.circleSize), y: 0)
+                    let scaling = CGAffineTransform(scaleX: 0.5*self.smallCircleRatio, y: 0.5*self.smallCircleRatio)
+                    self.circles[i].transform = scaling.concatenating(translation)
+                } else {
+                    // for rest of the circles
+                    self.circles[i].transform = translation
+                }
+            }
+            
+        }) { _ in
+            // Reset transformations
+            for circle in self.circles {
+                circle.transform = .identity
+            }
+            
+            self.circles[1].backgroundColor = .white
+            self.circles[0].backgroundColor = .systemPink
             
             self.adjustCirclesSize(smallIndices: [0, self.visibleCircles - 1])
             

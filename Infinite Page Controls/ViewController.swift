@@ -13,15 +13,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var indexLabel: UILabel!
     
     @IBAction func goPrev(_ sender: Any) {
+        if index == 0 { return }
         index -= 1
-        if index < 0 { return }
         indexLabel.text = String(index)
         pageControls.prevCircle()
     }
     
     @IBAction func goNext(_ sender: Any) {
+        if index == totalIndices - 1 { return }
         index += 1
-        if index >= totalIndices { return }
         indexLabel.text = String(index)
         pageControls.nextCircle()
     }
