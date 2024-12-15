@@ -34,6 +34,7 @@ public class InfinitePageControlsView: UIView {
     var circles: [UIView] = []
     var currentIndex: Int = 0
     var lastIndex: Int = -1
+    var visibleIndex: Int = 0
     
     required init?(coder: NSCoder) {
         circleSize = 50
@@ -78,13 +79,24 @@ public class InfinitePageControlsView: UIView {
             
         case .middle:
             
+            // moved forward
             if lastIndex < currentIndex {
-                animateCircleBackward(index)
+                //  if at extreme right - 1
+                if visibleIndex == visibleCircles - 2 {
+                    animateCircleBackward(index)
+                } else {
+                    visibleIndex += 1
+                    highlightACircle(visibleIndex)
+                }
             } else {
-                animateCircleForward(index)
+                //  if at extreme left - 1
+                if visibleIndex == 1 {
+                    animateCircleForward(index)
+                } else {
+                    visibleIndex -= 1
+                    highlightACircle(visibleIndex)
+                }
             }
-//            adjustCirclesSize(smallIndices: [0, visibleCircles - 1])
-//            highlightACircle(index)
             
         case .last:
             
@@ -113,10 +125,12 @@ public class InfinitePageControlsView: UIView {
         
         if currentIndex <= visibleCircles - 2 {
             newState = .first
+            visibleIndex = currentIndex
             update(state: newState, index: currentIndex)
         } else if currentIndex >= (totalCircles - visibleCircles + 1) {
             newState = .last
             let tmpIndex = (currentIndex - (totalCircles - visibleCircles))
+            visibleIndex = tmpIndex
             update(state: newState, index: tmpIndex)
         } else {
             newState = .middle
