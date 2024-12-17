@@ -1,13 +1,14 @@
 # InfinitePageControls
-Customised Page Controls for Swift Developers
+InfinitePageControls is a customizable and lightweight library for adding infinite scrolling page controls to iOS apps.
 
-# InfinitePageControls
+## Demo
 
-A customizable infinite page control view for iOS, written in Swift.
+### Quick Demo
+![Demo](Infinite%20Page%20Controls/App/demo.gif)
 
 ## Features
 - Supports infinite scrolling
-- Highly customizable using a configuration object
+- Customizable using a configuration object
 - Smooth animations for transitions
 
 ## Installation
