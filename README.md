@@ -8,7 +8,7 @@ InfinitePageControls is a customizable and lightweight library for adding infini
 
 If you find this project useful, please toss me a coffee:
 
-<a href="https://buymeacoffee.com/kartiken" target="blank"><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
+<a href="https://buymeacoffee.com/kartiken" target="_blank"><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
 
 
 ## Features
