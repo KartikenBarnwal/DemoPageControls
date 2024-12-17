@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Helps you define and customize the page controls at some level
 public struct InfinitePageControlsConfig {
     public var circleSize: CGFloat
     public var spacing: CGFloat
@@ -118,6 +119,7 @@ public class InfinitePageControlsView: UIView {
         }
     }
     
+    /// asks the InfinitePageControls to move one step before (if it's valid)
     public func prevCircle() {
         lastIndex = currentIndex
         currentIndex -= 1
@@ -125,6 +127,7 @@ public class InfinitePageControlsView: UIView {
         updateHelper()
     }
     
+    /// asks the InfinitePageControls to move one step after (if it's valid)
     public func nextCircle() {
         lastIndex = currentIndex
         currentIndex += 1

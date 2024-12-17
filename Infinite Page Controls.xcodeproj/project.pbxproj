@@ -11,7 +11,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5A3A892C2D0DB1BB00DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */ = {
+		5A3A893D2D11D18500DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -24,7 +24,7 @@
 		5A3A891C2D0DB1B900DEBE26 /* Infinite Page Controls */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				5A3A892C2D0DB1BB00DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */,
+				5A3A893D2D11D18500DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */,
 			);
 			path = "Infinite Page Controls";
 			sourceTree = "<group>";
