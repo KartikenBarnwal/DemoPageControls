@@ -4,6 +4,13 @@ InfinitePageControls is a customizable and lightweight library for adding infini
 ## Demo
 ![Demo](Infinite%20Page%20Controls/App/demo.gif)
 
+## Support Me
+
+If you find this project useful, please consider supporting me by buying me a coffee:
+
+<a href=""><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
+
+
 ## Features
 - Supports infinite scrolling
 - Customizable using a configuration object
