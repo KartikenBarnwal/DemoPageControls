@@ -4,7 +4,7 @@ InfinitePageControls is a customizable and lightweight library for adding infini
 ## Demo
 
 ### Quick Demo
-![Demo](App/demo.gif)
+![Demo](Infinite%20Page%20Controls/App/demo.gif)
 
 ## Features
 - Supports infinite scrolling
