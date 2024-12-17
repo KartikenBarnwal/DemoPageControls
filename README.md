@@ -6,9 +6,9 @@ InfinitePageControls is a customizable and lightweight library for adding infini
 
 ## Support Me
 
-If you find this project useful, please consider supporting me by buying me a coffee:
+If you find this project useful, please toss me a coffee:
 
-<a href=""><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
+<a href="https://buymeacoffee.com/kartiken"><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
 
 
 ## Features
