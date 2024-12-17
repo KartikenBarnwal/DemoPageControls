@@ -203,7 +203,7 @@ public class InfinitePageControlsView: UIView {
                     self.circles[i].transform = scaling.concatenating(translation)
                 } else if i == self.config.visibleCircles - 1 {
                     // handling first circle to even get smaller and translate a bit less
-                    let translation = CGAffineTransform(translationX: -1 * (self.config.circleSize), y: 0)
+                    let translation = CGAffineTransform(translationX: (self.config.circleSize), y: 0)
                     let scaling = CGAffineTransform(scaleX: self.config.smallCircleRatio * self.config.smallCircleRatio, y: self.config.smallCircleRatio * self.config.smallCircleRatio)
                     self.circles[i].transform = scaling.concatenating(translation)
                 } else {

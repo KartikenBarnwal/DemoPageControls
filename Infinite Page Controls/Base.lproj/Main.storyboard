@@ -4,6 +4,8 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,54 +17,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="la3-el-rsj" userLabel="Index">
-                                <rect key="frame" x="179.66666666666666" y="294.33333333333331" width="33.666666666666657" height="63.333333333333314"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="53"/>
-                                <color key="textColor" systemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hxb-Vr-P5h">
+                                <rect key="frame" x="0.0" y="59" width="393" height="420"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="420" id="hc5-Y4-tvd"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RgC-5L-ZXz">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="W2O-Kb-9Ga">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hmb-bI-viW">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View">
-                                <rect key="frame" x="0.0" y="391" width="393" height="150"/>
+                                <rect key="frame" x="0.0" y="479" width="393" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="6yj-2t-Jw9"/>
+                                    <constraint firstAttribute="height" constant="60" id="6yj-2t-Jw9"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p51-VH-H8d">
-                                <rect key="frame" x="263" y="308.66666666666669" width="60" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Next"/>
-                                <connections>
-                                    <action selector="goNext:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Bx-Jh-hq1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zT0-3W-jua">
-                                <rect key="frame" x="70" y="308.66666666666669" width="59" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Prev"/>
-                                <connections>
-                                    <action selector="goPrev:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lGe-VG-iBc"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="p51-VH-H8d" secondAttribute="trailing" constant="70" id="1k8-EJ-aqJ"/>
-                            <constraint firstItem="p51-VH-H8d" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="la3-el-rsj" secondAttribute="trailing" constant="8" symbolic="YES" id="3cb-aJ-U0f"/>
-                            <constraint firstItem="p51-VH-H8d" firstAttribute="centerY" secondItem="la3-el-rsj" secondAttribute="centerY" id="4IK-T6-avl"/>
-                            <constraint firstItem="la3-el-rsj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="zT0-3W-jua" secondAttribute="trailing" constant="8" symbolic="YES" id="D62-KX-Hkz"/>
-                            <constraint firstItem="zT0-3W-jua" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="70" id="H9f-W4-lBV"/>
-                            <constraint firstItem="9cg-bs-YOc" firstAttribute="top" secondItem="la3-el-rsj" secondAttribute="bottom" constant="33.329999999999998" id="Oty-kD-mSG"/>
+                            <constraint firstItem="Hxb-Vr-P5h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4bu-F2-qoN"/>
+                            <constraint firstAttribute="trailing" secondItem="Hxb-Vr-P5h" secondAttribute="trailing" id="PiN-Zl-KRA"/>
                             <constraint firstItem="9cg-bs-YOc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VkL-Kv-WCE"/>
-                            <constraint firstItem="zT0-3W-jua" firstAttribute="centerY" secondItem="la3-el-rsj" secondAttribute="centerY" id="fmh-Yv-f4P"/>
-                            <constraint firstItem="la3-el-rsj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="lDd-ZV-hti"/>
-                            <constraint firstItem="la3-el-rsj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mBc-fb-2c2"/>
+                            <constraint firstItem="Hxb-Vr-P5h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VqO-V5-BhW"/>
+                            <constraint firstItem="9cg-bs-YOc" firstAttribute="top" secondItem="Hxb-Vr-P5h" secondAttribute="bottom" id="oFU-Bm-1eN"/>
                             <constraint firstAttribute="trailing" secondItem="9cg-bs-YOc" secondAttribute="trailing" id="w14-9k-rAE"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="indexLabel" destination="la3-el-rsj" id="ZkN-RG-Ghy"/>
+                        <outlet property="collectionView" destination="Hxb-Vr-P5h" id="vnS-XZ-fXL"/>
                         <outlet property="pageControlsView" destination="9cg-bs-YOc" id="5Qm-5I-WyB"/>
                     </connections>
                 </viewController>
@@ -72,8 +70,8 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="lightTextColor">
-            <color white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
