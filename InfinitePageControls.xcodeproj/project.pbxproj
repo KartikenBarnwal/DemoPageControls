@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinite Page Controls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A3A891A2D0DB1B900DEBE26 /* InfinitePageControls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InfinitePageControls.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5A3A893D2D11D18500DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */ = {
+		5A3A893D2D11D18500DEBE26 /* Exceptions for "InfinitePageControls" folder in "InfinitePageControls" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
-			target = 5A3A89192D0DB1B900DEBE26 /* Infinite Page Controls */;
+			target = 5A3A89192D0DB1B900DEBE26 /* InfinitePageControls */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5A3A891C2D0DB1B900DEBE26 /* Infinite Page Controls */ = {
+		5A3A891C2D0DB1B900DEBE26 /* InfinitePageControls */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				5A3A893D2D11D18500DEBE26 /* Exceptions for "Infinite Page Controls" folder in "Infinite Page Controls" target */,
+				5A3A893D2D11D18500DEBE26 /* Exceptions for "InfinitePageControls" folder in "InfinitePageControls" target */,
 			);
-			path = "Infinite Page Controls";
+			path = InfinitePageControls;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -45,7 +45,7 @@
 		5A3A89112D0DB1B900DEBE26 = {
 			isa = PBXGroup;
 			children = (
-				5A3A891C2D0DB1B900DEBE26 /* Infinite Page Controls */,
+				5A3A891C2D0DB1B900DEBE26 /* InfinitePageControls */,
 				5A3A891B2D0DB1B900DEBE26 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,7 +53,7 @@
 		5A3A891B2D0DB1B900DEBE26 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */,
+				5A3A891A2D0DB1B900DEBE26 /* InfinitePageControls.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -61,9 +61,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5A3A89192D0DB1B900DEBE26 /* Infinite Page Controls */ = {
+		5A3A89192D0DB1B900DEBE26 /* InfinitePageControls */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5A3A892D2D0DB1BB00DEBE26 /* Build configuration list for PBXNativeTarget "Infinite Page Controls" */;
+			buildConfigurationList = 5A3A892D2D0DB1BB00DEBE26 /* Build configuration list for PBXNativeTarget "InfinitePageControls" */;
 			buildPhases = (
 				5A3A89162D0DB1B900DEBE26 /* Sources */,
 				5A3A89172D0DB1B900DEBE26 /* Frameworks */,
@@ -74,13 +74,13 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5A3A891C2D0DB1B900DEBE26 /* Infinite Page Controls */,
+				5A3A891C2D0DB1B900DEBE26 /* InfinitePageControls */,
 			);
-			name = "Infinite Page Controls";
+			name = InfinitePageControls;
 			packageProductDependencies = (
 			);
 			productName = "Infinite Page Controls";
-			productReference = 5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */;
+			productReference = 5A3A891A2D0DB1B900DEBE26 /* InfinitePageControls.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -98,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5A3A89152D0DB1B900DEBE26 /* Build configuration list for PBXProject "Infinite Page Controls" */;
+			buildConfigurationList = 5A3A89152D0DB1B900DEBE26 /* Build configuration list for PBXProject "InfinitePageControls" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5A3A89192D0DB1B900DEBE26 /* Infinite Page Controls */,
+				5A3A89192D0DB1B900DEBE26 /* InfinitePageControls */,
 			);
 		};
 /* End PBXProject section */
@@ -316,7 +316,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5A3A89152D0DB1B900DEBE26 /* Build configuration list for PBXProject "Infinite Page Controls" */ = {
+		5A3A89152D0DB1B900DEBE26 /* Build configuration list for PBXProject "InfinitePageControls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A3A89302D0DB1BB00DEBE26 /* Debug */,
@@ -325,7 +325,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5A3A892D2D0DB1BB00DEBE26 /* Build configuration list for PBXNativeTarget "Infinite Page Controls" */ = {
+		5A3A892D2D0DB1BB00DEBE26 /* Build configuration list for PBXNativeTarget "InfinitePageControls" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5A3A892E2D0DB1BB00DEBE26 /* Debug */,
