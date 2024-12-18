@@ -21,7 +21,7 @@ If you find this project useful, please toss me a coffee:
 Use Swift Package Manager to add `InfinitePageControls` to your project:
 
 1. Go to **File > Add Packages** in Xcode.
-2. Enter the repository URL: `https://github.com/yourusername/InfinitePageControls`.
+2. Enter the repository URL: `https://github.com/KartikenBarnwal/InfinitePageControls`.
 
 ## Usage
 
