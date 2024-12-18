@@ -2,9 +2,14 @@
 InfinitePageControls is a customizable and lightweight library for adding infinite scrolling page controls to iOS apps.
 
 ## Demo
-
-### Quick Demo
 ![Demo](Infinite%20Page%20Controls/App/demo.gif)
+
+## Support Me
+
+If you find this project useful, please toss me a coffee:
+
+<a href="https://buymeacoffee.com/kartiken" target="_blank" rel="noopener noreferrer"><img src="https://www.codehim.com/wp-content/uploads/2022/09/bmc-button.png" width="200"><a/>
+
 
 ## Features
 - Supports infinite scrolling
