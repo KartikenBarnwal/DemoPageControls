@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5A3A8C962D16E81700DEBE26 /* PageControls in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3A8C952D16E81700DEBE26 /* PageControls */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinite Page Controls.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A3A8C962D16E81700DEBE26 /* PageControls in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "Infinite Page Controls";
 			packageProductDependencies = (
+				5A3A8C952D16E81700DEBE26 /* PageControls */,
 			);
 			productName = "Infinite Page Controls";
 			productReference = 5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 5A3A89112D0DB1B900DEBE26;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5A3A8C942D16E81700DEBE26 /* XCRemoteSwiftPackageReference "PageControlsForYou" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5A3A891B2D0DB1B900DEBE26 /* Products */;
 			projectDirPath = "";
@@ -335,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5A3A8C942D16E81700DEBE26 /* XCRemoteSwiftPackageReference "PageControlsForYou" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/KartikenBarnwal/PageControlsForYou";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5A3A8C952D16E81700DEBE26 /* PageControls */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5A3A8C942D16E81700DEBE26 /* XCRemoteSwiftPackageReference "PageControlsForYou" */;
+			productName = PageControls;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5A3A89122D0DB1B900DEBE26 /* Project object */;
 }

@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import PageControls
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pageControlsView: UIView!
-    var pageControls: InfinitePageControlsView?
+    @IBOutlet weak var pageControlsView: PageControlsForYouView!
+    @IBOutlet weak var pageControlsWrapper: UIView!
+    
+    var pageControls: PageControlsForYouView?
     
     var index: Int = 0
     let totalIndices: Int = 10
@@ -32,11 +35,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func setupPageControls() {
-        let config = InfinitePageControlsConfig(circleSize: 20, spacing: 10, totalCircles: items.count, circleBackground: .gray, selectedCircleBackground: .black)
+        let config = PageControlsForYouConfig(circleSize: 20, spacing: 10, totalCircles: items.count, circleBackground: .gray, selectedCircleBackground: .black)
 
         pageControls?.translatesAutoresizingMaskIntoConstraints = false
-        pageControls = InfinitePageControlsView(frame: pageControlsView.bounds, config: config)
-        pageControlsView.addSubview(pageControls!)
+        pageControls = PageControlsForYouView(frame: pageControlsWrapper.bounds, config: config)
+        pageControlsWrapper.addSubview(pageControls!)
     }
     
     

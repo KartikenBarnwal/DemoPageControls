@@ -40,11 +40,18 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View" customClass="PageControlsForYouView" customModule="PageControls">
                                 <rect key="frame" x="0.0" y="479" width="393" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="6yj-2t-Jw9"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8v6-dw-aRk" userLabel="Wrapper View 2">
+                                <rect key="frame" x="0.0" y="579" width="393" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="W1Z-6k-h69"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -52,16 +59,20 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Hxb-Vr-P5h" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4bu-F2-qoN"/>
+                            <constraint firstItem="8v6-dw-aRk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="DfG-ih-Hzk"/>
+                            <constraint firstItem="8v6-dw-aRk" firstAttribute="top" secondItem="9cg-bs-YOc" secondAttribute="bottom" constant="40" id="MLO-2U-5Ei"/>
                             <constraint firstAttribute="trailing" secondItem="Hxb-Vr-P5h" secondAttribute="trailing" id="PiN-Zl-KRA"/>
                             <constraint firstItem="9cg-bs-YOc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VkL-Kv-WCE"/>
                             <constraint firstItem="Hxb-Vr-P5h" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VqO-V5-BhW"/>
                             <constraint firstItem="9cg-bs-YOc" firstAttribute="top" secondItem="Hxb-Vr-P5h" secondAttribute="bottom" id="oFU-Bm-1eN"/>
+                            <constraint firstItem="8v6-dw-aRk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oat-i4-gx8"/>
                             <constraint firstAttribute="trailing" secondItem="9cg-bs-YOc" secondAttribute="trailing" id="w14-9k-rAE"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="Hxb-Vr-P5h" id="vnS-XZ-fXL"/>
                         <outlet property="pageControlsView" destination="9cg-bs-YOc" id="5Qm-5I-WyB"/>
+                        <outlet property="pageControlsWrapper" destination="8v6-dw-aRk" id="86u-o5-B7s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
