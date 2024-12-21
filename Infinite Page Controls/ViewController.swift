@@ -11,10 +11,10 @@ import PageControls
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var pageControlsView: PageControlsForYouView!
+    @IBOutlet weak var pageControlsView: PageControlsForYou!
     @IBOutlet weak var pageControlsWrapper: UIView!
     
-    var pageControls: PageControlsForYouView?
+    var pageControls: PageControlsForYou?
     
     var index: Int = 0
     let totalIndices: Int = 10
@@ -30,43 +30,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.dataSource = self
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
-        setupPageControls()
+        setupPageControlsProgrammatically()
+        setupPageControlsFromStoryboard()
         index = 0
     }
     
-    func setupPageControls() {
+    func setupPageControlsProgrammatically() {
         let config = PageControlsForYouConfig(circleSize: 20, spacing: 10, totalCircles: items.count, circleBackground: .gray, selectedCircleBackground: .black)
 
         pageControls?.translatesAutoresizingMaskIntoConstraints = false
-        pageControls = PageControlsForYouView(frame: pageControlsWrapper.bounds, config: config)
+        pageControls = PageControlsForYou(frame: pageControlsWrapper.bounds, config: config)
         pageControlsWrapper.addSubview(pageControls!)
     }
     
-    
-    // M - 2
-    /*
-    pageControls = InfinitePageControlsView(config: config)
-    pageControls?.translatesAutoresizingMaskIntoConstraints = false
-    pageControlsView.addSubview(pageControls!)
-
-    NSLayoutConstraint.activate([
-        pageControls!.leadingAnchor.constraint(equalTo: pageControlsView.leadingAnchor),
-        pageControls!.trailingAnchor.constraint(equalTo: pageControlsView.trailingAnchor),
-        pageControls!.topAnchor.constraint(equalTo: pageControlsView.topAnchor),
-        pageControls!.bottomAnchor.constraint(equalTo: pageControlsView.bottomAnchor)
-    ])
-     */
+    func setupPageControlsFromStoryboard() {
+        let config = PageControlsForYouConfig(circleSize: 20, spacing: 10, totalCircles: items.count, circleBackground: .gray, selectedCircleBackground: .black)
+        
+        pageControlsView.configure(with: config)
+    }
     
     func goPrev() {
         if index == 0 { return }
         index -= 1
+        
+        // programmatic instance
         pageControls!.prevCircle()
+        
+        // storyboard instance
+        pageControlsView.toCircle(index: index)
     }
     
     func goNext() {
         if index == totalIndices - 1 { return }
         index += 1
+        
+        // programmatic instance
         pageControls!.nextCircle()
+        
+        // storyboard instance
+        pageControlsView.toCircle(index: index)
     }
     
     
