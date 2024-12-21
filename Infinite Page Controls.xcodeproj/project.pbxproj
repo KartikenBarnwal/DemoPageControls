@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A3A8C962D16E81700DEBE26 /* PageControls in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3A8C952D16E81700DEBE26 /* PageControls */; };
+		5A3A8C9A2D16F85A00DEBE26 /* PageControlsForYou in Frameworks */ = {isa = PBXBuildFile; productRef = 5A3A8C992D16F85A00DEBE26 /* PageControlsForYou */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A3A8C962D16E81700DEBE26 /* PageControls in Frameworks */,
+				5A3A8C9A2D16F85A00DEBE26 /* PageControlsForYou in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,7 @@
 			);
 			name = "Infinite Page Controls";
 			packageProductDependencies = (
-				5A3A8C952D16E81700DEBE26 /* PageControls */,
+				5A3A8C992D16F85A00DEBE26 /* PageControlsForYou */,
 			);
 			productName = "Infinite Page Controls";
 			productReference = 5A3A891A2D0DB1B900DEBE26 /* Infinite Page Controls.app */;
@@ -357,10 +357,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5A3A8C952D16E81700DEBE26 /* PageControls */ = {
+		5A3A8C992D16F85A00DEBE26 /* PageControlsForYou */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5A3A8C942D16E81700DEBE26 /* XCRemoteSwiftPackageReference "PageControlsForYou" */;
-			productName = PageControls;
+			productName = PageControlsForYou;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

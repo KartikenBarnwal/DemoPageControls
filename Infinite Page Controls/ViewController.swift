@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import PageControls
+import PageControlsForYou
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 

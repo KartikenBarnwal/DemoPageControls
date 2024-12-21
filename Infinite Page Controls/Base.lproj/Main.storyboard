@@ -40,7 +40,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View" customClass="PageControlsForYou" customModule="Infinite_Page_Controls" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9cg-bs-YOc" userLabel="Wrapper View" customClass="PageControlsForYou" customModule="PageControlsForYou">
                                 <rect key="frame" x="0.0" y="479" width="393" height="60"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>

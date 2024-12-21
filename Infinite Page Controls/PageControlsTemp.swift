@@ -8,7 +8,7 @@
 import UIKit
 
 /// Helps you define and customize the page controls
-public struct PageControlsForYouConfig {
+public struct PageControlsForYouConfigTemp {
     public var circleSize: CGFloat
     public var spacing: CGFloat
     public var totalCircles: Int
@@ -38,7 +38,7 @@ public struct PageControlsForYouConfig {
     }
 }
 
-public class PageControlsForYou: UIView {
+public class PageControlsForYouTemp: UIView {
     
     enum States {
         case first
@@ -46,20 +46,20 @@ public class PageControlsForYou: UIView {
         case last
     }
     
-    private var config: PageControlsForYouConfig
+    private var config: PageControlsForYouConfigTemp
     private var circles: [UIView] = []
     private var currentIndex: Int = 0
     private var lastIndex: Int = -1
     private var visibleIndex: Int = 0
     
-    public init(frame: CGRect, config: PageControlsForYouConfig) {
+    public init(frame: CGRect, config: PageControlsForYouConfigTemp) {
         self.config = config
         super.init(frame: frame)
         setup()
     }
     
     required init?(coder: NSCoder) {
-        self.config = PageControlsForYouConfig()
+        self.config = PageControlsForYouConfigTemp()
         super.init(coder: coder)
         setup()
     }
@@ -135,7 +135,7 @@ public class PageControlsForYou: UIView {
     }
     
     /// Configure the PageControlsForYou with the given config if you are trying to do it from storyboard
-    public func configure(with config: PageControlsForYouConfig) {
+    public func configure(with config: PageControlsForYouConfigTemp) {
         
         self.config = config
         setup()
